@@ -1,0 +1,37 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.star {
+  position: relative;
+}
+
+.star.full {
+  color: #f5a623;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.star.half {
+  color: #ddd;
+}
+
+.star.half::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #f5a623;
+}
+
+.rating-value {
+  margin-left: 4px;
+  font-size: 14px;
+  color: #555;
+}
