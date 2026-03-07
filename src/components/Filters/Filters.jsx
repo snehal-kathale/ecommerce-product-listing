@@ -19,6 +19,7 @@ const Filters = ({
   const selectCategory = (category) => {
     setFilters({
       ...filters,
+      brands: [],
       category: filters.category === category ? "" : category,
     });
   };
@@ -32,6 +33,12 @@ const Filters = ({
       ...filters,
       brands: updated,
     });
+  };
+
+  const handlePriceChange = (field, value) => {
+    if (Number.isFinite(+value)) {
+      setPriceInput((prevState) => ({ ...prevState, [field]: value }));
+    }
   };
 
   return (
@@ -64,17 +71,13 @@ const Filters = ({
           <Input
             placeholder="Min"
             value={priceInput.min}
-            onChange={(e) =>
-              setPriceInput({ ...priceInput, min: e.target.value })
-            }
+            onChange={(e) => handlePriceChange("min", e.target.value)}
           />
 
           <Input
             placeholder="Max"
             value={priceInput.max}
-            onChange={(e) =>
-              setPriceInput({ ...priceInput, max: e.target.value })
-            }
+            onChange={(e) => handlePriceChange("max", e.target.value)}
           />
         </div>
 
@@ -88,9 +91,10 @@ const Filters = ({
 
       <div className="filter-section">
         <h3>Brands</h3>
-
-        {brands.length === 0 ? (
-          <p className="noBrands">No brands available</p>
+        {!filters.category ? (
+          <p className="noBrands">Please select a category first!</p>
+        ) : brands.length === 0 ? (
+          <p className="noBrands">No brands found for this category</p>
         ) : (
           brands.map((brand) => (
             <Checkbox

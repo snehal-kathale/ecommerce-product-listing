@@ -126,7 +126,6 @@ const ProductList = () => {
     if (filters.maxPrice && p.price > Number(filters.maxPrice)) return false;
     return true;
   });
-  console.log({ filteredProducts });
   const totalPages = Math.ceil(
     (filters.search ||
     filters.brands.length ||
