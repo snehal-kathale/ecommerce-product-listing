@@ -2,11 +2,42 @@ import "./Pagination.css";
 import Button from "../Button/Button";
 
 function Pagination({ page, totalPages, onPageChange }) {
-  const pages = [];
+  const getPages = () => {
+    const pages = [];
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+    if (totalPages <= 10) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+      return pages;
+    }
+
+    if (page <= 10) {
+      for (let i = 1; i <= 10; i++) {
+        pages.push(i);
+      }
+      pages.push("...");
+      pages.push(totalPages);
+      return pages;
+    }
+    pages.push(1);
+    if (page > 3) {
+      pages.push("...");
+    }
+    const start = Math.max(2, page - 1);
+    const end = Math.min(totalPages - 1, page + 1);
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+    if (page < totalPages - 2) {
+      pages.push("...");
+    }
+
+    pages.push(totalPages);
+
+    return pages;
+  };
+  const pages = getPages();
 
   return (
     <div className="pagination">
@@ -18,15 +49,21 @@ function Pagination({ page, totalPages, onPageChange }) {
         onClick={() => onPageChange(page - 1)}
       />
 
-      {pages.map((p) => (
-        <Button
-          key={p}
-          title={p}
-          variant="pagination"
-          active={page === p}
-          onClick={() => onPageChange(p)}
-        />
-      ))}
+      {pages.map((p, index) =>
+        p === "..." ? (
+          <span key={index} className="ellipsis">
+            ...
+          </span>
+        ) : (
+          <Button
+            key={p}
+            title={p}
+            variant="pagination"
+            active={page === p}
+            onClick={() => onPageChange(p)}
+          />
+        ),
+      )}
 
       <Button
         title="Next"

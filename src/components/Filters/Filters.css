@@ -1,0 +1,55 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.search {
+  width: 80%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.filtersPanel {
+  border-radius: 8px;
+}
+
+.filter-section {
+  margin-top: 20px;
+}
+
+.filter-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.search {
+  margin-bottom: 16px;
+}
+
+.price-range {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.price-range input {
+  flex: 1;
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+.apply-btn {
+  width: 100%;
+}
+
+.noBrands {
+  font-size: 13px;
+  color: #888;
+}

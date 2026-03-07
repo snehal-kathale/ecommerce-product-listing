@@ -1,0 +1,8 @@
+.image-skeleton {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}

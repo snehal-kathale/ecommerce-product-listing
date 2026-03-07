@@ -1,8 +1,15 @@
 import "./Input.css";
 
-const Input = ({ value, onChange, placeholder, icon, type = "text" }) => {
+const Input = ({
+  value,
+  onChange,
+  placeholder,
+  icon,
+  type = "text",
+  className,
+}) => {
   return (
-    <div className="input-wrapper">
+    <div className={`input-wrapper ${className}`}>
       {icon && <span className="input-icon">{icon}</span>}
       <input
         className="input"

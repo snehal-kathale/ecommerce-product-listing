@@ -1,0 +1,55 @@
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.filters {
+  width: 270px;
+  min-width: 260px;
+  padding: 15px;
+  border-right: 1px solid #eee;
+  background: #f7f7f7;
+  overflow-y: auto;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  transition: width 0.3s ease;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.productSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  overflow-y: auto;
+}
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.paginationWrapper > * {
+  display: flex;
+  gap: 8px;
+}

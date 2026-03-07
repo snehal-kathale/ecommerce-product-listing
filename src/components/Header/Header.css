@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #2f3e4d;
+  color: white;
+}
+
+.search {
+  width: 40%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.menu {
+  cursor: pointer;
+}

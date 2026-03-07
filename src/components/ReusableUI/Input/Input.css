@@ -1,7 +1,56 @@
-.input{
-width:100%;
-padding:8px;
-border:1px solid #ccc;
-border-radius:6px;
-margin-bottom:8px;
+.input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  padding-left: 36px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  transition: border 0.2s;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  padding-left: 36px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: #2f80ed;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+.header-search {
+  width: 420px;
+}
+
+.filter-search {
+  width: 100%;
+}
+
+.price-range {
+  display: flex;
+  gap: 8px;
+}
+
+.price-range .input-wrapper {
+  flex: 1;
 }
