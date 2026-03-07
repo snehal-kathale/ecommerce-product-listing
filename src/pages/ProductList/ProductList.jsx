@@ -10,6 +10,8 @@ import {
 } from "../../apiServices/productApi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./ProductList.css";
+import CardSkeleton from "../../components/ReusableUI/Skeleton/CardSkeleton";
+import FiltersSkeleton from "../../components/ReusableUI/Skeleton/FilterSkeleton";
 
 const ProductList = () => {
   const LIMIT = 8;
@@ -20,7 +22,6 @@ const ProductList = () => {
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
   const [showFilters, setShowFilters] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [filters, setFilters] = useState({
@@ -61,7 +62,6 @@ const ProductList = () => {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      setError(null);
       let data;
 
       if (filters.category) {
@@ -82,7 +82,6 @@ const ProductList = () => {
       setBrands(uniqueBrands);
     } catch (err) {
       console.error(err);
-      setError("Failed to load products");
       alert("Failed to load products. Please try again.");
     } finally {
       setLoading(false);
@@ -90,8 +89,16 @@ const ProductList = () => {
   };
 
   const loadCategories = async () => {
-    const data = await getCategories();
-    setCategories(data);
+    try {
+      setLoading(true);
+      const data = await getCategories();
+      setCategories(data);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to load categories. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handlePageChange = (newPage) => {
@@ -136,24 +143,30 @@ const ProductList = () => {
       <div className="content">
         {showFilters && (
           <div className="filters">
-            <Filters
-              categories={categories}
-              brands={brands}
-              filters={filters}
-              setFilters={setFilters}
-              applyPriceFilter={applyPriceFilter}
-            />
+            {loading ? (
+              <FiltersSkeleton />
+            ) : (
+              <Filters
+                categories={categories}
+                brands={brands}
+                filters={filters}
+                setFilters={setFilters}
+                applyPriceFilter={applyPriceFilter}
+              />
+            )}
           </div>
         )}
         <div className="productSection">
           <div className="productGrid">
-            {filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                product={product}
-                onClick={() => navigate(`/product/${product.id}`)}
-              />
-            ))}
+            {!loading && filteredProducts.length
+              ? filteredProducts.map((product) => (
+                  <Card
+                    key={product.id}
+                    product={product}
+                    onClick={() => navigate(`/product/${product.id}`)}
+                  />
+                ))
+              : [...Array(LIMIT)].map((_, i) => <CardSkeleton key={i} />)}
           </div>
           <div className="paginationWrapper">
             <Pagination

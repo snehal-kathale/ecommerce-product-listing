@@ -1,12 +1,14 @@
-import React from "react";
+import "./CardSkeleton.css";
 
 const CardSkeleton = () => {
   return (
     <div className="cardSkeleton">
-      <div className="card-divider"></div>
-      <div className="card-body">
-        <div className="card-footer">
-          <p className="card-price"></p>
+      <div className="card-image-skeleton"></div>
+      <div className="card-divider-skeleton"></div>
+      <div className="card-body-skeleton">
+        <h3 className="card-title-skeleton"></h3>
+        <div className="card-footer-skeleton">
+          <h3 className="card-price-skeleton"></h3>
           <div></div>
         </div>
       </div>

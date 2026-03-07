@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import "./ProductDetails.css";
 import Pagination from "../../components/ReusableUI/Pagination/Pagination";
 import ImagesSkeleton from "../../components/ReusableUI/Skeleton/ImagesSkeleton";
+import { Loader } from "../../components/ReusableUI/Loader/Loader";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const ProductDetails = () => {
     setImageIndex(newPage);
   };
 
-  if (!productData) return <div> Loading...</div>;
+  if (!productData) return <Loader loading={!productData} />;
   return (
     <div className="detailPage">
       <Header />
