@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import Card from "../../components/ReusableUI/Card/Card";
-import Filters from "../../components/Filters/Filters";
-import Pagination from "../../components/ReusableUI/Pagination/Pagination";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   getProducts,
   getCategories,
   getProductsByCategory,
 } from "../../apiServices/productApi";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import "./ProductList.css";
+import Header from "../../components/Header/Header";
+import Card from "../../components/ReusableUI/Card/Card";
+import Filters from "../../components/Filters/Filters";
+import Pagination from "../../components/ReusableUI/Pagination/Pagination";
 import CardSkeleton from "../../components/ReusableUI/Skeleton/CardSkeleton";
 import FiltersSkeleton from "../../components/ReusableUI/Skeleton/FilterSkeleton";
+import "./ProductList.css";
 
 const ProductList = () => {
   const LIMIT = 8;

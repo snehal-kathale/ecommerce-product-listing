@@ -1,21 +1,26 @@
 import React from "react";
 import Input from "../ReusableUI/Input/Input";
+import cartIcon from "../../assets/Icons/icon-cart.svg";
+import searchIcon from "../../assets/Icons/icon-search.svg";
+import headerToggleIcon from "../../assets/Icons/icon-header-toggle.svg";
 import "./Header.css";
-import { SearchIcon } from "../../assets/Icons/SearchIcon";
-import { HeaderToggle } from "../../assets/Icons/HeaderToggle";
 
 const Header = ({ toggleFilters }) => {
   return (
     <div className="header">
       <div className="menu" onClick={toggleFilters}>
-        <HeaderToggle />
+        <div className="icons">
+          <img src={headerToggleIcon} />
+        </div>
       </div>
       <Input
         placeholder="Search products..."
         className={"header-search"}
-        icon={<SearchIcon />}
+        icon={searchIcon}
       />
-      <div className="icons">🛒 👤</div>
+      <div className="icons">
+        <img src={cartIcon} />
+      </div>
     </div>
   );
 };

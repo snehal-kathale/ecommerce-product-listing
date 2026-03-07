@@ -10,7 +10,11 @@ const Input = ({
 }) => {
   return (
     <div className={`input-wrapper ${className}`}>
-      {icon && <span className="input-icon">{icon}</span>}
+      {icon && (
+        <span className="input-icon">
+          <img src={icon} />
+        </span>
+      )}
       <input
         className="input"
         type={type}

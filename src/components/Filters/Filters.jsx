@@ -1,9 +1,9 @@
+import { useState } from "react";
 import Button from "../ReusableUI/Button/Button";
 import Input from "../ReusableUI/Input/Input";
 import Checkbox from "../ReusableUI/Checkbox/Checkbox";
+import searchIcon from "../../assets/Icons/icon-search.svg";
 import "./Filters.css";
-import { useState } from "react";
-import { SearchIcon } from "../../assets/Icons/SearchIcon";
 
 const Filters = ({
   categories,
@@ -48,7 +48,7 @@ const Filters = ({
         value={filters.search}
         onChange={(e) => setFilters({ ...filters, search: e.target.value })}
         className={"search"}
-        icon={<SearchIcon />}
+        icon={searchIcon}
       />
 
       <div className="filter-section">

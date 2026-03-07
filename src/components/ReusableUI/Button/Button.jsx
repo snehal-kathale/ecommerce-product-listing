@@ -14,7 +14,11 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {icon && <span className="icon">{icon}</span>}
+      {icon && (
+        <span className="icon">
+          <img src={icon} />
+        </span>
+      )}
       {title}
     </button>
   );

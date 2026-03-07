@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getProductById } from "../../apiServices/productApi";
 import { useNavigate, useParams } from "react-router-dom";
+import { getProductById } from "../../apiServices/productApi";
 import Button from "../../components/ReusableUI/Button/Button";
 import Rating from "../../components/ReusableUI/Rating/Rating";
 import Header from "../../components/Header/Header";
-import "./ProductDetails.css";
 import Pagination from "../../components/ReusableUI/Pagination/Pagination";
+import Loader from "../../components/ReusableUI/Loader/Loader";
 import ImagesSkeleton from "../../components/ReusableUI/Skeleton/ImagesSkeleton";
-import { Loader } from "../../components/ReusableUI/Loader/Loader";
+import iconLeftArrow from "../../assets/Icons/icon-left-arrow.svg";
+import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -45,7 +46,7 @@ const ProductDetails = () => {
         <div className="backWrapper">
           <Button
             title="Back"
-            icon="←"
+            icon={iconLeftArrow}
             variant="outline"
             onClick={() => navigate(-1)}
           />
@@ -110,7 +111,6 @@ const ProductDetails = () => {
                     <Rating rating={review.rating} />
                   </span>
                 </div>
-
                 <p style={{ display: "flex" }}>{review.comment}</p>
               </div>
             ))}

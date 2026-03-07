@@ -7,7 +7,7 @@ const FiltersSkeleton = () => {
 
       <div className="filter-section">
         <div className="skeleton-title" />
-        {[1, 2, 3, 4].map((i) => (
+        {[...Array(4)].map((_, i) => (
           <div key={i} className="skeleton-checkbox-row">
             <div className="skeleton-box" />
             <div className="skeleton-text" />
@@ -26,7 +26,7 @@ const FiltersSkeleton = () => {
 
       <div className="filter-section">
         <div className="skeleton-title" />
-        {[1, 2, 3].map((i) => (
+        {[...Array[3]].map((_, i) => (
           <div key={i} className="skeleton-checkbox-row">
             <div className="skeleton-box" />
             <div className="skeleton-text" />

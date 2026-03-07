@@ -1,7 +1,7 @@
 import { Oval } from "react-loader-spinner";
 import "./Loader.css";
 
-export const Loader = ({ loading }) => {
+const Loader = ({ loading }) => {
   return (
     <div className="loader-overlay">
       <Oval
@@ -17,3 +17,5 @@ export const Loader = ({ loading }) => {
     </div>
   );
 };
+
+export default Loader;
