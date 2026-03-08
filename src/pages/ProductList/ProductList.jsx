@@ -20,8 +20,9 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [totalProducts, setTotalProducts] = useState(0);
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
-  const [showFilters, setShowFilters] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+  const [productsLoading, setProductsLoading] = useState(false);
+  const [filtersLoading, setFiltersLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [filters, setFilters] = useState({
@@ -59,9 +60,10 @@ const ProductList = () => {
     setPage(1);
   }, [filters]);
 
+  // to fetch products and set brands
   const loadProducts = async () => {
     try {
-      setLoading(true);
+      setProductsLoading(true);
       let data;
 
       if (filters.category) {
@@ -84,20 +86,21 @@ const ProductList = () => {
       console.error(err);
       alert("Failed to load products. Please try again.");
     } finally {
-      setLoading(false);
+      setProductsLoading(false);
     }
   };
 
+  //to fetch categories
   const loadCategories = async () => {
     try {
-      setLoading(true);
+      setFiltersLoading(true);
       const data = await getCategories();
       setCategories(data);
     } catch (err) {
       console.error(err);
       alert("Failed to load categories. Please try again.");
     } finally {
-      setLoading(false);
+      setFiltersLoading(false);
     }
   };
 
@@ -142,7 +145,7 @@ const ProductList = () => {
       <div className="content">
         {showFilters && (
           <div className="filters">
-            {loading ? (
+            {filtersLoading ? (
               <FiltersSkeleton />
             ) : (
               <Filters
@@ -157,7 +160,7 @@ const ProductList = () => {
         )}
         <div className="productSection">
           <div className="productGrid">
-            {!loading && filteredProducts.length
+            {!productsLoading && filteredProducts.length
               ? filteredProducts.map((product) => (
                   <Card
                     key={product.id}

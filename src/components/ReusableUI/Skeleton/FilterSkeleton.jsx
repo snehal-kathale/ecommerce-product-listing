@@ -26,7 +26,7 @@ const FiltersSkeleton = () => {
 
       <div className="filter-section">
         <div className="skeleton-title" />
-        {[...Array[3]].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
           <div key={i} className="skeleton-checkbox-row">
             <div className="skeleton-box" />
             <div className="skeleton-text" />

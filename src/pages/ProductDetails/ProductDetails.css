@@ -74,8 +74,8 @@
 }
 .brand {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .price {
@@ -91,6 +91,7 @@
   margin-bottom: 25px;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 .descriptionSection p {
   color: #555;
