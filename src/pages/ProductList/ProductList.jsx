@@ -160,23 +160,31 @@ const ProductList = () => {
         )}
         <div className="productSection">
           <div className="productGrid">
-            {!productsLoading && filteredProducts.length
-              ? filteredProducts.map((product) => (
-                  <Card
-                    key={product.id}
-                    product={product}
-                    onClick={() => navigate(`/product/${product.id}`)}
-                  />
-                ))
-              : [...Array(LIMIT)].map((_, i) => <CardSkeleton key={i} />)}
+            {productsLoading ? (
+              [...Array(LIMIT)].map((_, i) => <CardSkeleton key={i} />)
+            ) : filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  product={product}
+                  onClick={() => navigate(`/product/${product.id}`)}
+                />
+              ))
+            ) : (
+              <div className="noProducts">
+                <p>No Products Found</p>
+              </div>
+            )}
           </div>
-          <div className="paginationWrapper">
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
+          {filteredProducts?.length > 0 && (
+            <div className="paginationWrapper">
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

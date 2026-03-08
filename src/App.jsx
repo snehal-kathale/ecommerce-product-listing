@@ -6,7 +6,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/ecommerce-product-listing">
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetails />} />
